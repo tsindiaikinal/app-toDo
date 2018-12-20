@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Каталог продуктов и форма редактирования</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="app" class="row">
+        <header class="col-12">
+            <h1 class="text-center">{{ namePage }}</h1>
+            <nav>
+                <ul class="list">
+                    <li class="list-item"><a href="#">Кнопка</a></li>
+                    <li class="list-item"><a href="#">Кнопка</a></li>
+                    <li class="list-item"><a href="#">Кнопка</a></li>
+                    <li class="list-item"><a href="#">Кнопка</a></li>
+                    <li class="list-item"><a href="#">Кнопка</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="col-12">
+            <button class="btn btn-warning btn-edit">Edit</button>
+            <h3 class="catalog">Каталог</h3>
+            <form action="" method="post">
+                <input type="submit" value="Отправить">
+            </form>
+            <div class="btn-catalog-wrapper mx-auto">
+                <!-- <button class="btn btn-success btn-sm btn-add mx-4" @click="addProduct">Add</button>
+                <button class="btn btn-danger btn-sm btn-remove" @click="removeProduct">Remove</button> -->
+            </div>
+            <!-- <pre>{{data.field2}}</pre> -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Discription</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a :href="imagesjson"  @click="openListProduct">{{ titleProduct.nameExcavators[0] }}</a></td>
+                        <td v-html="field1" @click="getField()" class="discription px-5">{{ field1 }}</td>
+                        <td>{{ categoryProduct[0] }}</td>
+                        <td> <input type="checkbox" name="" id=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td><a>{{ getField() }}</a></td>
+                        <td v-html="field2">{{ field2 }}</td>
+                        <td>{{ categoryProduct[3] }}</td>
+                        <td> <input type="checkbox" name="" id=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                    <td><a>{{ }}</a></td>
+                        <td>{{ field3 }}</td>
+                        <td>{{ categoryProduct[1] }}</td>
+                        <td> <input type="checkbox" name="" id=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td><a>{{ }}</a></td>
+                        <td>{{ field4 }}</td>
+                        <td>{{ categoryProduct[2] }}</td>
+                        <td><input type="checkbox" name="" id=""></td>
+                    </tr>
+                    <tr v-for="(value, key) in textProducts">
+                        <th scope="row">5</th>
+                        <td class="title-product"><a>{{ titleProduct.nameExcavators[1] }}</a></td>
+                        <td>{{  }}</td>
+                        <td>{{ value }}</td>
+                        <td><input type="checkbox" name="" id=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pop-up-window">
+                <h3>Добавить товары</h3>
+                <form action="" method="get">
+                    <input type="search" name="" id="search">
+                    <label for="search" class="btn btn-outline-info">Поиск</label>
+                    <table class="table table-bordered">
+                        <th>Основная категория</th>
+                            <th>Название товара</th>
+                            <th>Фото товара</th>
+                            <th>Описание</th>
+                            <th>Поз.</th>
+                            <th>Статус</th>
+                            <tr>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="">Землеройная техника</option>
+                                        <option value="">Дорожная техника</option>
+                                        <option value="">Транспортная техника</option>
+                                        <option value="">Подъемная техника</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                                <td>
+                                    <select name="photos" id="">
+                                        <option value><img :src="images">{{ images }}</option>
+                                        <option value><img :src="images">{{ images }}</option>
+                                        <option value><img :src="images">{{ images }}</option>
+                                        <option value><img :src="images">{{ images }}</option>
+                                        <option value><img :src="images">{{ images }}</option>
+                                    </select>
+                                </td>
+                                <td><textarea v-model.lazy="getField" name=""  cols="20" rows="1"></textarea></td>
+                                <td><input type="number" name="" id="" class="w-100"></td>
+                                <td><input type="checkbox" name="" id=""></td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <select name="" id="">
+                                <option value="">Землеройная техника</option>
+                                <option value="">Дорожная техника</option>
+                                <option value="">Транспортная техника</option>
+                                <option value="">Подъемная техника</option>
+                                </select>
+                            </td>
+                            <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                            <td>
+                                <select name="photos" id="">
+                                    <option value><img :src="images">{{ images }}</option>
+                                    <option value><img :src="images">{{ images }}</option>
+                                    <option value><img :src="images">{{ images }}</option>
+                                    <option value><img :src="images">{{ images }}</option>
+                                    <option value><img :src="images">{{ images }}</option>
+                                </select>
+                            </td>
+                            <td><textarea v-model.lazy="field2" name="" id="" cols="20" rows="1"></textarea></td>
+                            <td><input type="number" name="" id="" class="w-100"></td>
+                            <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td><select name="" id="">
+                                <option value="">Землеройная техника</option>
+                                <option value="">Дорожная техника</option>
+                                <option value="">Транспортная техника</option>
+                                <option value="">Подъемная техника</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                        <td>
+                            <select name="photos" id="">
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                            </select>
+                        </td>
+                        <td><textarea v-model.lazy="field3" name="" id="" cols="20" rows="1"></textarea></td>
+                        <td><input type="number" name="" id="" class="w-100"></td>
+                        <td><input type="checkbox" name="" id=""></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="" id="">
+                                <option value="">Землеройная техника</option>
+                                <option value="">Дорожная техника</option>
+                                <option value="">Транспортная техника</option>
+                                <option value="">Подъемная техника</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                        <td>
+                            <select name="photos" id="">
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                                <option value><img :src="images">{{ images }}</option>
+                            </select>
+                        </td>
+                        <td><textarea v-model.lazy="field4"  name="" id="" cols="20" rows="1"></textarea></td>
+                        <td><input type="number" name="" id="" class="w-100"></td>
+                        <td><input type="checkbox" name="" id=""></td>
+                    </tr>
+            </table>
+            <input type="submit" value="Создать" class="btn btn-primary">
+            </form>
+        </div>
+        </main>
+        <footer class="col-12"></footer>
+    </div>
+</div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script>
+        var dataCategory = "../json/main.json";
+        new Vue({
+            el: "#app",
+            data: {
+                namePage: "Catalog of products",
+                json: '../json/main.json',
+                textProducts: {
+                    tr: 'Гидромолоты',
+                    iam: 'Яморубы'
+                },
+                categoryProduct: [
+                    'Экскаваторы',
+                    'Бульдозеры',
+                    'Гидромолоты',
+                    'Грейферы',
+                    'Яморубы'
+                ],
+                images: 'img/',
+                titleProduct: {
+                    nameExcavators: [
+                    "Hitachi ZX250LCH-5G",
+                    "Doosan DX225LCA - SLR"
+                    ] 
+                },
+                field1: '',
+                field2: '',
+                field3: '',
+                field4: '',
+                discription: {
+                    excovators: [
+                        'Вес: <b>25300 кг</b>;<br> Глубина копания: <b>6500 - 7610 мм</b>;<br> Мощность двигателя: <b>132(177) л.с.</b>; <br> Объем ковша: <b>0, 8 - 1, 25 м3</b>',
+                        'Вес: <b>25300 кг</b>;<br> Глубина копания: <b>11650 мм</b>;<br> Мощность двигателя: <b>115(157) л.с.</b>;<br> Объем ковша: <b>0, 51 м3</b>'
+                    ]
+                },
+            },
+            methods: {
+                openListProduct: function(event) {
+                //   return  event.target.style.classList.add = 'pop-up-window';
+                },
+                setFild: function(event) {
+                //    this.field1 = event.target.value;
+                },
+                getField: function (field) {
+                    test = {
+                        babel: 'rereverse',
+                        motheus: 'local storage string',
+                        demo: 'rambler'
+                    }
+                    localStorage.setItem( 'testObj', JSON.stringify(test) );
+                    var getTest = localStorage.getItem('testObj');
+                    console.log(getTest);
+                    var getTestRes = JSON.parse(getTest);
+                    console.log(getTestRes);
+                    return getTestRes.motheus;
+                    // var resultGetField = localStorage.getItem('myField1');
+
+                    // console.log(resultGetField);
+                    // resultGetField = JSON.parse(resultGetField);
+                    // return resultField;
+                    // console.log(resultGetField = JSON.parse('resultGetField'));
+                }
+                // jsonParse: function () {
+                //     var products = this.categoryProduct.dataJson;
+                //     products = JSON.parse(products);
+
+                    // document.getElementById('jsonText').innerHTML = user.name;
+                    // return products;
+                // addProduct() {
+
+                // },
+                // removeProduct() {
+
+                // }
+            }
+        });
+    </script>
+    </body>
+</html>
