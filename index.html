@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Каталог продуктов и форма редактирования</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Каталог продуктов и форма редактирования</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="css/"> -->
+        <link rel="stylesheet" href="css/font-awesome4.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <div id="app" class="row">
-        <header class="col-12">
-            <h1 class="text-center">{{ namePage }}</h1>
-            <nav>
-                <ul class="list">
-                    <li class="list-item"><a href="#">Кнопка</a></li>
-                    <li class="list-item"><a href="#">Кнопка</a></li>
-                    <li class="list-item"><a href="#">Кнопка</a></li>
-                    <li class="list-item"><a href="#">Кнопка</a></li>
-                    <li class="list-item"><a href="#">Кнопка</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main class="col-12">
-            <button class="btn btn-warning btn-edit">Edit</button>
-            <h3 class="catalog">Каталог</h3>
-            <form action="" method="post">
+            <header class="col-12">
+                <h1 class="text-center">{{ namePage }}</h1>
+                <nav>
+                    <ul class="list">
+                        <li class="list-item"><a href="#">Кнопка</a></li>
+                        <li class="list-item"><a href="#">Кнопка</a></li>
+                        <li class="list-item"><a href="#">Кнопка</a></li>
+                        <li class="list-item"><a href="#">Кнопка</a></li>
+                        <li class="list-item"><a href="#">Кнопка</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main class="col-12">
+                <h3 class="catalog">Каталог</h3>
+                <input type="search" name="" id="search" autofocus>
+                <label for="search" class="btn btn-outline-info btn-sm">Поиск</label>
+                <form action="" method="post">
                 <input type="submit" value="Отправить">
             </form>
             <div class="btn-catalog-wrapper mx-auto">
                 <!-- <button class="btn btn-success btn-sm btn-add mx-4" @click="addProduct">Add</button>
-                <button class="btn btn-danger btn-sm btn-remove" @click="removeProduct">Remove</button> -->
-            </div>
-            <!-- <pre>{{data.field2}}</pre> -->
-            <table class="table table-striped">
+                    <button class="btn btn-danger btn-sm btn-remove" @click="removeProduct">Remove</button> -->
+                </div>
+                <!-- <pre>{{data.field2}}</pre> -->
+                <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -61,7 +64,7 @@
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                    <td><a>{{ }}</a></td>
+                        <td><a>{{ }}</a></td>
                         <td>{{ field3 }}</td>
                         <td>{{ categoryProduct[1] }}</td>
                         <td> <input type="checkbox" name="" id=""></td>
@@ -82,14 +85,26 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="pop-up-window">
-                <h3>Добавить товары</h3>
+        </main>
+        <footer class="col-12"></footer>
+    </div>
+</div>
+<div id ="openEdit">
+<button id="show-modal" @click="showModal = true" class="btn btn-warning btn-edit">Edit</button>
+    <modal v-if="showModal" @close="showModal = false">
+        you can use custom content here to overwrite
+        default content
+    </modal>
+</div>
+<script type="text/x-template" id="modal-template">
+    <transition name="modal">
+        <div class="modal-mask">
+            <div class="pop-up-window" id="modal-window">
+                <h3 class="pop-up-window__h3">Добавить товары</h3>
                 <form action="" method="get">
-                    <input type="search" name="" id="search">
-                    <label for="search" class="btn btn-outline-info">Поиск</label>
                     <table class="table table-bordered">
                         <th>Основная категория</th>
-                            <th>Название товара</th>
+                        <th>Название товара</th>
                             <th>Фото товара</th>
                             <th>Описание</th>
                             <th>Поз.</th>
@@ -118,13 +133,13 @@
                                 <td><input type="checkbox" name="" id=""></td>
                             </tr>
                             <tr>
-                            <td>
+                                <td>
                                 <select name="" id="">
                                 <option value="">Землеройная техника</option>
                                 <option value="">Дорожная техника</option>
                                 <option value="">Транспортная техника</option>
                                 <option value="">Подъемная техника</option>
-                                </select>
+                            </select>
                             </td>
                             <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
                             <td>
@@ -185,21 +200,20 @@
                         <td><input type="number" name="" id="" class="w-100"></td>
                         <td><input type="checkbox" name="" id=""></td>
                     </tr>
-            </table>
-            <input type="submit" value="Создать" class="btn btn-primary">
-            </form>
-        </div>
-        </main>
-        <footer class="col-12"></footer>
+                </table>
+                <input type="submit" value="Создать" class="btn btn-primary btn-sm btn__create">
+        </form>
+        <button class="modal-close-button fa fa-angle-left" @click="$emit('close')"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
     </div>
 </div>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
-    <script src="js/bootstrap.min.js"></script>
+</transition>
+</script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
     <script src="js/vue.js"></script>
     <script>
-        var dataCategory = "../json/main.json";
-        new Vue({
+    var dataCategory = "../json/main.json";
+   var openModaledit = new Vue({
             el: "#app",
             data: {
                 namePage: "Catalog of products",
@@ -252,27 +266,25 @@
                     var getTestRes = JSON.parse(getTest);
                     console.log(getTestRes);
                     return getTestRes.motheus;
-                    // var resultGetField = localStorage.getItem('myField1');
-
-                    // console.log(resultGetField);
-                    // resultGetField = JSON.parse(resultGetField);
-                    // return resultField;
-                    // console.log(resultGetField = JSON.parse('resultGetField'));
                 }
-                // jsonParse: function () {
-                //     var products = this.categoryProduct.dataJson;
-                //     products = JSON.parse(products);
-
-                    // document.getElementById('jsonText').innerHTML = user.name;
-                    // return products;
-                // addProduct() {
-
-                // },
-                // removeProduct() {
-
-                // }
             }
         });
-    </script>
+        Vue.component('modal', {
+        template: '#modal-template'
+        })
+        // start app
+      new Vue({
+            el: '#openEdit',
+            data: {
+                showModal: false
+            },
+            methods: {
+                // runRotate: function () {
+                //     console.log('Mouse works');
+                //     }
+            }
+        })
+        console.log(openModaledit);
+        </script>
     </body>
-</html>
+    </html>
