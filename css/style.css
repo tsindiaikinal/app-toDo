@@ -15,12 +15,29 @@ table {
     border: 1px solid lightcyan;
 }
 
+.title-name {
+    height: 30px;
+    font-size: 0.7rem;
+}
+
 .list {
+    width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
     list-style: none;
 }
 
 main {
     height: 600px;
+}
+
+td {
+    border: none !important;
+}
+
+tr {
+    border-bottom: 1px solid #dee2e6;
 }
 
 .btn-edit {
@@ -86,9 +103,19 @@ main {
     transition: margin-left 0.5s;
 }
 
+textarea {
+    padding-left: 5px;
+}
+
+/* MODAL WINDOW <<< end */
+
 .btn__create {
     position: relative;
     right: -92.5%;
+}
+
+.search-container {
+    float: right;
 }
 
 #search {
@@ -101,6 +128,7 @@ main {
 }
 
 select {
+    max-width: 120px;
     font-size: 11px;
 }
 
@@ -110,7 +138,10 @@ select {
 }
 
 .discription {
-    width: 370px;
+    display: inline-block;
+   max-width: 370px;
+    height: 70px;
+    overflow: hidden;
 }
 
 footer {
