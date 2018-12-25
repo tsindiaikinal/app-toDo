@@ -50,170 +50,166 @@
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td><a :href="imagesjson"  @click="openListProduct">{{ titleProduct.nameExcavators[0] }}</a></td>
-                        <td v-html="field1" @click="getField()" class="discription px-5">{{ field1 }}</td>
-                        <td>{{ categoryProduct[0] }}</td>
+                        <td><a :href="imagesjson"  @click="openListProduct">{{ titleProduct.nameExcavators[3] }}</a></td>
+                        <td><img :width="width" :src="imagesjson[2]" @mouseover="zoomImg(200, $event)" @mouseout="zoomImg(50, $event)" alt="">{{  }}</td>
+                        <!-- <td v-html="field1" @click="getField()" class="discription px-5">{{ field1 }}</td> -->
+                        <td>{{ categoryProduct[3] }}</td>
                         <td> <input type="checkbox" name="" id=""></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td><a>{{ getField() }}</a></td>
-                        <td v-html="field2">{{ field2 }}</td>
-                        <td>{{ categoryProduct[3] }}</td>
+                        <!-- <td v-html="field2">{{ field2 }}</td> -->
+                        <td><img :width="width" :src="imagesjson[4]" @mouseover="zoomImg(200, $event)" @mouseout="zoomImg(50, $event)" alt=""></td>
+                        <td>{{ categoryProduct[0] }}</td>
                         <td> <input type="checkbox" name="" id=""></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td><a>{{ }}</a></td>
-                        <td>{{ field3 }}</td>
+                        <td><a>{{ field3 }}</a></td>
+                        <td><img :width="width" :src="imagesjson[1]" @mouseover="zoomImg(200, $event)" @mouseout="zoomImg(50, $event)" alt=""></td>
                         <td>{{ categoryProduct[1] }}</td>
                         <td> <input type="checkbox" name="" id=""></td>
                     </tr>
                     <tr>
                         <th scope="row">4</th>
-                        <td><a>{{ }}</a></td>
-                        <td>{{ field4 }}</td>
-                        <td>{{ categoryProduct[2] }}</td>
+                        <td><a>{{ field4 }}</a></td>
+                        <td><img :width="width" :src="imagesjson[0]" @mouseover="zoomImg(200, $event)" @mouseout="zoomImg(50, $event)" alt=""></td>
+                        <td>{{ categoryProduct[4] }}</td>
                         <td><input type="checkbox" name="" id=""></td>
                     </tr>
                     <tr v-for="(value, key) in textProducts">
                         <th scope="row">5</th>
                         <td class="title-product"><a>{{ titleProduct.nameExcavators[1] }}</a></td>
-                        <td>{{  }}</td>
                         <td>{{ value }}</td>
                         <td><input type="checkbox" name="" id=""></td>
                     </tr>
                 </tbody>
             </table>
+            <template id="modal-template" v-if="showModal">
+                <transition name="modal">
+                    <div class="modal-mask">
+                        <div class="pop-up-window" id="modal-window">
+                            <h3 class="pop-up-window__h3">Добавить товары</h3>
+                            <form action="" method="get">
+                                <table class="table table-bordered">
+                                    <th>Основная категория</th>
+                                    <th>Название товара</th>
+                                    <th>Фото товара</th>
+                                    <th>Описание</th>
+                                    <th>Поз.</th>
+                                    <th>Статус</th>
+                                    <tr>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Землеройная техника</option>
+                                                <option value="">Дорожная техника</option>
+                                                <option value="">Транспортная техника</option>
+                                                <option value="">Подъемная техника</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                                        <td>
+                                            <select name="photos" id="">
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                            </select>
+                                        </td>
+                                        <td><textarea v-model.lazy="getField" name="" cols="20" rows="1"></textarea></td>
+                                        <td><input type="number" name="" id="" class="w-100"></td>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Землеройная техника</option>
+                                                <option value="">Дорожная техника</option>
+                                                <option value="">Транспортная техника</option>
+                                                <option value="">Подъемная техника</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                                        <td>
+                                            <select name="photos" id="">
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                            </select>
+                                        </td>
+                                        <td><textarea v-model.lazy="field2" name="" id="" cols="20" rows="1"></textarea></td>
+                                        <td><input type="number" name="" id="" class="w-100"></td>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><select name="" id="">
+                                                <option value="">Землеройная техника</option>
+                                                <option value="">Дорожная техника</option>
+                                                <option value="">Транспортная техника</option>
+                                                <option value="">Подъемная техника</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                                        <td>
+                                            <select name="photos" id="">
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                            </select>
+                                        </td>
+                                        <td><textarea v-model.lazy="field3" name="" id="" cols="20" rows="1"></textarea></td>
+                                        <td><input type="number" name="" id="" class="w-100"></td>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Землеройная техника</option>
+                                                <option value="">Дорожная техника</option>
+                                                <option value="">Транспортная техника</option>
+                                                <option value="">Подъемная техника</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
+                                        <td>
+                                            <select name="photos" id="">
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                                <option value><img :src="images">{{ images }}</option>
+                                            </select>
+                                        </td>
+                                        <td><textarea v-model.lazy="field4" name="" id="" cols="20" rows="1"></textarea></td>
+                                        <td><input type="number" name="" id="" class="w-100"></td>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                    </tr>
+                                </table>
+                                <input type="submit" value="Создать" class="btn btn-primary btn-sm btn__create">
+                            </form>
+        <button class="modal-close-button fa fa-angle-left" @click="showModal = false"><i class="fa fa-angle-right"               aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </transition>
+            </template>
+            <button id="show-modal" @click="showModal = true" class="btn btn-warning btn-edit">Edit</button>
         </main>
-        <footer class="col-12"></footer>
+        <footer class="col-12"></footer>    
+        </div>
     </div>
-</div>
-<div id ="openEdit">
-<button id="show-modal" @click="showModal = true" class="btn btn-warning btn-edit">Edit</button>
-    <modal v-if="showModal" @close="showModal = false">
-        you can use custom content here to overwrite
-        default content
-    </modal>
-</div>
-<script type="text/x-template" id="modal-template">
-    <transition name="modal">
-        <div class="modal-mask">
-            <div class="pop-up-window" id="modal-window">
-                <h3 class="pop-up-window__h3">Добавить товары</h3>
-                <form action="" method="get">
-                    <table class="table table-bordered">
-                        <th>Основная категория</th>
-                        <th>Название товара</th>
-                            <th>Фото товара</th>
-                            <th>Описание</th>
-                            <th>Поз.</th>
-                            <th>Статус</th>
-                            <tr>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="">Землеройная техника</option>
-                                        <option value="">Дорожная техника</option>
-                                        <option value="">Транспортная техника</option>
-                                        <option value="">Подъемная техника</option>
-                                    </select>
-                                </td>
-                                <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
-                                <td>
-                                    <select name="photos" id="">
-                                        <option value><img :src="images">{{ images }}</option>
-                                        <option value><img :src="images">{{ images }}</option>
-                                        <option value><img :src="images">{{ images }}</option>
-                                        <option value><img :src="images">{{ images }}</option>
-                                        <option value><img :src="images">{{ images }}</option>
-                                    </select>
-                                </td>
-                                <td><textarea v-model.lazy="getField" name=""  cols="20" rows="1"></textarea></td>
-                                <td><input type="number" name="" id="" class="w-100"></td>
-                                <td><input type="checkbox" name="" id=""></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <select name="" id="">
-                                <option value="">Землеройная техника</option>
-                                <option value="">Дорожная техника</option>
-                                <option value="">Транспортная техника</option>
-                                <option value="">Подъемная техника</option>
-                            </select>
-                            </td>
-                            <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
-                            <td>
-                                <select name="photos" id="">
-                                    <option value><img :src="images">{{ images }}</option>
-                                    <option value><img :src="images">{{ images }}</option>
-                                    <option value><img :src="images">{{ images }}</option>
-                                    <option value><img :src="images">{{ images }}</option>
-                                    <option value><img :src="images">{{ images }}</option>
-                                </select>
-                            </td>
-                            <td><textarea v-model.lazy="field2" name="" id="" cols="20" rows="1"></textarea></td>
-                            <td><input type="number" name="" id="" class="w-100"></td>
-                            <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                        <tr>
-                            <td><select name="" id="">
-                                <option value="">Землеройная техника</option>
-                                <option value="">Дорожная техника</option>
-                                <option value="">Транспортная техника</option>
-                                <option value="">Подъемная техника</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
-                        <td>
-                            <select name="photos" id="">
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                            </select>
-                        </td>
-                        <td><textarea v-model.lazy="field3" name="" id="" cols="20" rows="1"></textarea></td>
-                        <td><input type="number" name="" id="" class="w-100"></td>
-                        <td><input type="checkbox" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select name="" id="">
-                                <option value="">Землеройная техника</option>
-                                <option value="">Дорожная техника</option>
-                                <option value="">Транспортная техника</option>
-                                <option value="">Подъемная техника</option>
-                            </select>
-                        </td>
-                        <td><input type="text" name="" id="" placeholder="Введите название товара"></td>
-                        <td>
-                            <select name="photos" id="">
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                                <option value><img :src="images">{{ images }}</option>
-                            </select>
-                        </td>
-                        <td><textarea v-model.lazy="field4"  name="" id="" cols="20" rows="1"></textarea></td>
-                        <td><input type="number" name="" id="" class="w-100"></td>
-                        <td><input type="checkbox" name="" id=""></td>
-                    </tr>
-                </table>
-                <input type="submit" value="Создать" class="btn btn-primary btn-sm btn__create">
-        </form>
-        <button class="modal-close-button fa fa-angle-left" @click="$emit('close')"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-    </div>
-</div>
-</transition>
-</script>
+
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script>
+<script src="js/vue.js"></script>
+<script>
     var dataCategory = "../json/main.json";
-   var openModaledit = new Vue({
+var tableProduct =  new Vue({
             el: "#app",
             data: {
                 namePage: "Catalog of products",
@@ -229,6 +225,9 @@
                     'Грейферы',
                     'Яморубы'
                 ],
+                imagesjson: [
+                    'img/land_building_machinery/bobcat-s175-s-gidromolotom-300x190.jpg','img/land_building_machinery/buldozer-caterpillar-953s-300x190.jpg','img/land_building_machinery/kolesnyj-ekskavator-atlas-1304-m-s-grejferom-300x190.jpg','img/land_building_machinery/ekskavator-jcb-js-160-w-s-grejferom-300x190.jpg','img/land_building_machinery/gidravlicheskij-ekskavator-amfibiya-doosan-dx225lca-slr-300x190.jpg'
+                ],
                 images: 'img/',
                 titleProduct: {
                     nameExcavators: [
@@ -241,11 +240,13 @@
                 field3: '',
                 field4: '',
                 discription: {
+                    hydraulicHammer: [],
                     excovators: [
-                        'Вес: <b>25300 кг</b>;<br> Глубина копания: <b>6500 - 7610 мм</b>;<br> Мощность двигателя: <b>132(177) л.с.</b>; <br> Объем ковша: <b>0, 8 - 1, 25 м3</b>',
-                        'Вес: <b>25300 кг</b>;<br> Глубина копания: <b>11650 мм</b>;<br> Мощность двигателя: <b>115(157) л.с.</b>;<br> Объем ковша: <b>0, 51 м3</b>'
+                        'Вес: <b>25300 кг</b>;<br> Глубина копания: <b>6500 - 7610 мм</b>;<br> Мощность двигателя: <b>132(177) л.с.</b>; <br> Объем ковша: <b>0, 8 - 1, 25 м3</b>','Вес: <b>25300 кг</b>;<br> Глубина копания: <b>11650 мм</b>;<br> Мощность двигателя: <b>115(157) л.с.</b>;<br> Объем ковша: <b>0, 51 м3</b>'
                     ]
                 },
+                showModal: false,
+                width: 50 + 'px'
             },
             methods: {
                 openListProduct: function(event) {
@@ -266,25 +267,16 @@
                     var getTestRes = JSON.parse(getTest);
                     console.log(getTestRes);
                     return getTestRes.motheus;
+                },
+                zoomImg: function (num, event) {
+                    event.target.style.width = num + 'px';
+                    event.target.style.position = "absolute"
                 }
+            },
+            computed: {
             }
         });
-        Vue.component('modal', {
-        template: '#modal-template'
-        })
-        // start app
-      new Vue({
-            el: '#openEdit',
-            data: {
-                showModal: false
-            },
-            methods: {
-                // runRotate: function () {
-                //     console.log('Mouse works');
-                //     }
-            }
-        })
-        console.log(openModaledit);
+        // console.log(tableProduct);
         </script>
     </body>
     </html>
